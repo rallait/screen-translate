@@ -1,0 +1,8 @@
+keyboard>=0.13.5
+pynput>=1.7.6
+pyperclip>=1.8.2
+requests>=2.28
+pystray>=0.19
+Pillow>=9.0
+# 可选：更精准的离线 OCR（装不上时程序自动改用 Windows 自带 OCR）
+# rapidocr-onnxruntime>=1.3
