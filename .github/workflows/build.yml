@@ -1,0 +1,43 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+jobs:
+  check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Compile check
+        run: python -m py_compile auto_translate.py ui.py translator.py ocr.py tts.py config.py
+      - name: Unit tests
+        run: python -m pytest tests -q
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: check
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Build exe
+        run: pyinstaller screen-translate.spec --clean --noconfirm
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/screen-translate.exe
+          generate_release_notes: true

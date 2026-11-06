@@ -5,7 +5,7 @@ a = Analysis(
     ['auto_translate.py'],
     pathex=[],
     binaries=[],
-    datas=[('ocr_winrt.ps1', '.')],
+    datas=[('ocr_winrt.ps1', '.'), ('icon.ico', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='hxy-translate',
+    name='screen-translate',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -35,4 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon='icon.ico',
 )

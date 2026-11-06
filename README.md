@@ -1,8 +1,27 @@
 # screen-translate · 划词翻译
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)](https://github.com/rallait/screen-translate)
+[![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://github.com/rallait/screen-translate)
+[![Release](https://img.shields.io/github/v/release/rallait/screen-translate)](https://github.com/rallait/screen-translate/releases)
+
+![demo](assets/demo.gif)
+
 一个 Windows 桌面端的全局划词翻译小工具：**鼠标拖选英文 → 悬停「译」图标 → 译文浮现在选区右下方**，不用切窗口、不用按快捷键。
 
 免 API 密钥，开箱即用；支持双语对照、英文朗读、截图 OCR 和 5 套可即时切换的视觉主题。
+
+## English
+
+**screen-translate** is a Windows hover-translate tool: drag-select any English text, hover the floating "译" icon, and the translation pops up right below your selection — no hotkeys, no window switching.
+
+- Key-free translation (Youdao demo endpoint with MyMemory fallback, auto retry)
+- Smart mixed-language handling: pure Chinese is left alone, English segments translate in place
+- Bilingual mode (translation + original), English TTS, screenshot OCR
+- 5 instantly-switchable themes (colors + fonts + animations), tray resident, single instance
+- Grab the ready-to-run exe from [Releases](https://github.com/rallait/screen-translate/releases), or run from source with Python 3.9+
+
+中文文档 ↓
 
 ## 特性
 
@@ -30,6 +49,16 @@ python auto_translate.py
 
 想让它后台静默运行（不显示控制台），用 `pythonw auto_translate.py` 启动；程序也会自动隐藏自己独占的控制台窗口。
 
+## 主题预览
+
+| 午夜蓝 | 曜石金 | 极光青 |
+| --- | --- | --- |
+| ![midnight](assets/theme-midnight.png) | ![obsidian](assets/theme-obsidian.png) | ![aurora](assets/theme-aurora.png) |
+
+| 磨砂紫 | 樱雾白 |
+| --- | --- |
+| ![glass](assets/theme-glass.png) | ![sakura](assets/theme-sakura.png) |
+
 ## 使用
 
 1. 在任意应用里用鼠标拖选一段英文（或中英混排文字）
@@ -48,11 +77,11 @@ python auto_translate.py
 ## 打包为 exe
 
 ```bash
-pip install pyinstaller
-pyinstaller hxy-translate.spec
+pip install -r requirements-dev.txt
+pyinstaller screen-translate.spec
 ```
 
-产物在 `dist/hxy-translate.exe`，单文件、无控制台。
+产物在 `dist/screen-translate.exe`，单文件、无控制台。
 
 ## 项目结构
 

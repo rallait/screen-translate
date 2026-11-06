@@ -50,6 +50,7 @@ import ui
 from translator import Cache, TranslationError, Translator, english_only, needs_translation
 
 SCRIPT = os.path.abspath(__file__)
+__version__ = "1.0.0"
 MAX_TEXT = 10000                      # 单次划词翻译上限，防止超大文本卡死
 MUTEX_NAME = "Global\\hxy_translate_single"
 task_queue = queue.Queue()            # 线程 -> Tk 主线程 的安全通道
